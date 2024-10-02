@@ -1,4 +1,4 @@
-package coding.day_1;
+package coding.day_1.cp;
 
 public class BankAccount {
     private double balance;
@@ -18,19 +18,21 @@ public class BankAccount {
     }
 
     public void deposit(double amount) {
-        if (amount > 0) {
+        if (amount >= 0) {
             balance += amount;
         } else {
-            throw new IllegalArgumentException("Amount can not be below zero");
+            throw new IllegalArgumentException("Amount cannot be below ZERO");
         }
+        System.out.println(Thread.currentThread().getName() + " balance after deposit " + balance);
     }
 
     public void withdraw(double amount) {
+
         if (amount > 0 && balance - amount >= 0) {
             balance -= amount;
         } else {
-            throw new IllegalArgumentException("Invalid withdraw amount");
+            throw new IllegalArgumentException("Invalid withdraw amount or insufficient funds");
         }
-        System.out.println(Thread.currentThread().getName() + "balance is" + " " + balance);
+        System.out.println(Thread.currentThread().getName() + " balance after withdrawal " + balance);
     }
 }
